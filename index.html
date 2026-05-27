@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://unpkg.com/blockly/blockly.min.js"></script>
+</head>
+<body>
+
+<div id="blocklyDiv" style="height: 400px; width: 600px;"></div>
+
+<xml id="toolbox" style="display: none">
+  <block type="controls_repeat_ext"></block>
+  <block type="math_number"></block>
+</xml>
+
+<button onclick="runCode()">執行</button>
+
+<script>
+  const workspace = Blockly.inject('blocklyDiv', {
+    toolbox: document.getElementById('toolbox')
+  });
+
+  function runCode() {
+    const code = Blockly.JavaScript.workspaceToCode(workspace);
+    console.log(code);
+    eval(code);
+  }
+</script>
+
+</body>
+</html>
